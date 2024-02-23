@@ -387,6 +387,11 @@ export default class ReconnectingWebSocket {
                 this._addListeners();
 
                 this._connectTimeout = setTimeout(() => this._handleTimeout(), connectionTimeout);
+            })
+            .catch(error => {
+                this._handleError(
+                    new Events.ErrorEvent(error instanceof Error ? error : Error('RETRY'), this),
+                );
             });
     }
 

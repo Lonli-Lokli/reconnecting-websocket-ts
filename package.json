@@ -1,6 +1,6 @@
 {
-    "name": "reconnecting-websocket",
-    "version": "4.4.0",
+    "name": "reconnecting-websocket-ts",
+    "version": "4.5.0",
     "description": "Reconnecting WebSocket",
     "main": "./dist/reconnecting-websocket-cjs.js",
     "module": "./dist/reconnecting-websocket-mjs.js",
@@ -8,11 +8,11 @@
     "scripts": {
         "build": "npm run clean && rollup -c && uglifyjs --compress --mangle -o dist/reconnecting-websocket-iife.min.js dist/reconnecting-websocket-iife.js",
         "test": "jest --coverage",
-        "clean": "del dist && del coverage && del .nyc_output",
+        "clean": "shx rm -rf dist coverage .nyc_output",
         "report": "nyc report --reporter=html && opn coverage/index.html",
         "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-        "lint": "DEBUG=eslint:file-enumerator eslint __tests__/*.* ./*.ts",
-        "prepublishOnly": "npm run clean && npm run lint && npm run build && npm test"
+        "lint": "eslint __tests__/*.* ./*.ts",
+        "prepublishOnly": "npm run build"
     },
     "keywords": [
         "websocket",
@@ -25,7 +25,7 @@
         "forever",
         "automatic"
     ],
-    "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
+    "author": "Pedro Ladaria <pedro.ladaria@gmail.com>, Lonli-Lokli <lonli.lokli@gmail.com>",
     "files": [
         "dist/*"
     ],
@@ -45,6 +45,7 @@
         "prettier": "^1.19.1",
         "rollup": "^0.66.6",
         "rollup-plugin-typescript2": "^0.23.0",
+        "shx": "0.3.4",
         "ts-jest": "^25.2.0",
         "tslib": "^1.10.0",
         "tslint": "^5.20.1",
@@ -58,15 +59,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/pladaria/reconnecting-websocket.git"
+        "url": "git+https://github.com/Lonli-Lokli/reconnecting-websocket-ts.git"
     },
     "bugs": {
-        "url": "https://github.com/pladaria/reconnecting-websocket/issues"
+        "url": "https://github.com/Lonli-Lokli/reconnecting-websocket-ts/issues"
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
     },
-    "homepage": "https://github.com/pladaria/reconnecting-websocket#readme",
+    "homepage": "https://github.com/Lonli-Lokli/reconnecting-websocket-ts#readme",
     "lint-staged": {
         "linters": {
             "*.{js,md,ts}": [
